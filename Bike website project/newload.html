@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyramid Loader</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column; /* Change to column to stack elements */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            /* Set the background using the container styles */
+            --s: 105px; /* control the size */
+            --c1: #b9b9b9;
+            --c2: #dcdcdc;
+            --c3: #fafafa;
+
+            background: conic-gradient(
+                    from 75deg,
+                    var(--c1) 15deg,
+                    var(--c2) 0 30deg,
+                    #0000 0 180deg,
+                    var(--c2) 0 195deg,
+                    var(--c1) 0 210deg,
+                    #0000 0
+                )
+                calc(0.5 * var(--s)) calc(0.5 * var(--s) / 0.577),
+            conic-gradient(
+                var(--c1) 30deg,
+                var(--c3) 0 75deg,
+                var(--c1) 0 90deg,
+                var(--c2) 0 105deg,
+                var(--c3) 0 150deg,
+                var(--c2) 0 180deg,
+                var(--c3) 0 210deg,
+                var(--c1) 0 256deg,
+                var(--c2) 0 270deg,
+                var(--c1) 0 286deg,
+                var(--c2) 0 331deg,
+                var(--c3) 0
+            );
+            background-size: var(--s) calc(var(--s) / 0.577);
+            /* 0.577=tan(30deg)*/
+        }
+
+        .pyramid-loader {
+            position: relative;
+            width: 400px; /* Increased width */
+            height: 400px; /* Increased height */
+            display: block;
+            transform-style: preserve-3d;
+            transform: rotateX(-20deg);
+        }
+
+        .wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+
+        .pyramid-loader .wrapper .side {
+            width: 100px; /* Increased width */
+            height: 100px; /* Increased height */
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            transform-origin: center top;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        .pyramid-loader .wrapper .side1 {
+            transform: rotateZ(-30deg) rotateY(90deg);
+            background: conic-gradient(#2BDEAC, #F028FD, #D8CCE6, #2F2585);
+        }
+
+        .pyramid-loader .wrapper .side2 {
+            transform: rotateZ(30deg) rotateY(90deg);
+            background: conic-gradient(#2F2585, #D8CCE6, #F028FD, #2BDEAC);
+        }
+
+        .pyramid-loader .wrapper .side3 {
+            transform: rotateX(30deg);
+            background: conic-gradient(#2F2585, #D8CCE6, #F028FD, #2BDEAC);
+        }
+
+        .pyramid-loader .wrapper .side4 {
+            transform: rotateX(-30deg);
+            background: conic-gradient(#2BDEAC, #F028FD, #D8CCE6, #2F2585);
+        }
+
+        .pyramid-loader .wrapper .shadow {
+            width: 80px; /* Increased width */
+            height: 80px; /* Increased height */
+            background: #8B5AD5;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            transform: rotateX(90deg) translateZ(-40px);
+            filter: blur(12px);
+        }
+
+        .link {
+            margin-top: 20px; /* Space between loader and link */
+            color: #ffffff; /* Link color */
+            text-decoration: none; /* Remove underline */
+            font-size: 20px; /* Font size */
+        }
+
+        .link:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        /* Styles for the logo grid */
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 20px; /* Space between items */
+            margin-top: 40px; /* Space above the grid */
+            width: 80%; /* Limit the width of the grid */
+        }
+
+        .logo-item {
+            text-align: center; /* Center the text and image */
+        }
+
+        .logo-item img {
+            width: 100px; /* Set logo width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* Style for company names */
+        .logo-item p {
+            color: black; /* Set text color to black */
+            font-weight: bold; /* Make text bold */
+            margin: 5px 0 0; /* Add some margin */
+        }
+
+        /* Highlighted return link */
+        .return-link {
+            margin-top: 20px; /* Space above the return link */
+            padding: 10px 20px; /* Padding for the link */
+            background-color: #ff4500; /* Highlight color */
+            color: white; /* Text color */
+            border-radius: 5px; /* Rounded corners */
+            text-align: center; /* Center the text */
+            text-decoration: none; /* Remove underline */
+            font-size: 20px; /* Font size */
+        }
+
+        .return-link:hover {
+            background-color: #ff6347; /* Darker shade on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pyramid-loader">
+        <div class="wrapper">
+            <span class="side side1"></span>
+            <span class="side side2"></span>
+            <span class="side side3"></span>
+            <span class="side side4"></span>
+            <span class="shadow"></span>
+        </div>  
+    </div>
+
+    <div class="logo-grid">
+        <div class="logo-item">
+            <a href="ducati.html" class="link">
+                <img src="ducatilogo.html" alt="Ducati Logo">
+                <p>Ducati</p>
+            </a>
+        </div>
+        <div class="logo-item">
+            <a href="kawasaki.html" class="link">
+                <img src="kawasakilogo.html" alt="Kawasaki Logo">
+                <p>Kawasaki</p>
+            </a>
+        </div>
+        <div class="logo-item">
+            <a href="yamaha.html" class="link">
+                <img src="yamahalogo.html" alt="Yamaha Logo">
+                <p>Yamaha</p>
+            </a>
+        </div>
+        <div class="logo-item">
+            <a href="bmw.html" class="link">
+                <img src="bmwlogo.html" alt="BMW Logo">
+                <p>BMW</p>
+            </a>
+        </div>
+        <div class="logo-item">
+            <a href="ktm.html" class="link">
+                <img src="ktmlogo.html" alt="KTM Logo">
+                <p>KTM</p>
+            </a>
+        </div>
+        <div class="logo-item">
+            <a href="suzuki.html" class="link">
+                <img src="suzukilogo.html" alt="Suzuki Logo">
+                <p>Suzuki</p>
+            </a>
+        </div>
+        <div class="logo-item">
+            <a href="honda.html" class="link">
+                <img src="hondalogo.html" alt="Honda Logo">
+                <p>Honda</p>
+            </a>
+        </div>
+    </div>
+
+    <a href="homepage.html" class="return-link" target="homepage.html">Return to home page</a>
+
+</body>
+</html>

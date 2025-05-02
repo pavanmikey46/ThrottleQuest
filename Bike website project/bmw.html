@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMW S1000RR</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            /* Background set to match the previous container */
+            --s: 37px; /* control the size */
+
+            --c: #0000, #282828 0.5deg 119.5deg, #0000 120deg;
+            --g1: conic-gradient(from 60deg at 56.25% calc(425% / 6), var(--c));
+            --g2: conic-gradient(from 180deg at 43.75% calc(425% / 6), var(--c));
+            --g3: conic-gradient(from -60deg at 50% calc(175% / 12), var(--c));
+            background: var(--g1), var(--g1) var(--s) calc(1.73 * var(--s)), var(--g2),
+                var(--g2) var(--s) calc(1.73 * var(--s)), var(--g3) var(--s) 0,
+                var(--g3) 0 calc(1.73 * var(--s)) #1e1e1e;
+            background-size: calc(2 * var(--s)) calc(3.46 * var(--s));
+            font-family: Arial, sans-serif;
+            color: white; /* Text color */
+        }
+
+        .logo {
+            width: 150px; /* Adjust logo size */
+            margin-bottom: 20px;
+        }
+
+        .bike-image {
+            width: 80%; /* Responsive image size */
+            max-width: 600px; /* Maximum width */
+            margin-bottom: 20px;
+            border-radius: 8px; /* Rounded corners for the image */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow effect */
+        }
+
+        .details {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        .back-button {
+            margin-top: 20px; /* Space above the button */
+            padding: 10px 20px; /* Button padding */
+            font-size: 16px; /* Button font size */
+            color: white; /* Button text color */
+            background-color: #ff4500; /* Button background color */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        .back-button:hover {
+            background-color: #ff6347; /* Button hover color */
+        }
+    </style>
+</head>
+<body>
+
+    <img src="bmwlogo.html" alt="BMW Logo" class="logo"> <!-- Updated BMW Logo -->
+
+    <img src="bmwbike.html" alt="BMW S1000RR" class="bike-image"> <!-- Updated BMW S1000RR image -->
+
+    <div class="details">
+        <h1>BMW S1000RR</h1>
+        <p><strong>Engine:</strong> 999cc inline-four</p>
+        <p><strong>Power:</strong> 205 hp @ 13,500 rpm</p>
+        <p><strong>Torque:</strong> 113 Nm @ 10,500 rpm</p>
+        <p><strong>Weight:</strong> 197 kg (wet)</p>
+        <p><strong>Top Speed:</strong> 299 km/h</p>
+        <p><strong>Features:</strong> Dynamic traction control, lightweight chassis, advanced electronics</p>
+    </div>
+
+    <button class="back-button" onclick="window.location.href='newload.html'">Go Back</button> <!-- Go Back Button -->
+
+</body>
+</html>

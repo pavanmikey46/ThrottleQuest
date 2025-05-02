@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Booking</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh; /* Set height to full viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(
+                    circle farthest-side at 0% 50%,
+                    #282828 23.5%,
+                    rgba(255, 170, 0, 0) 0
+                )
+                21px 30px,
+            radial-gradient(
+                    circle farthest-side at 0% 50%,
+                    #2c3539 24%,
+                    rgba(240, 166, 17, 0) 0
+                )
+                19px 30px,
+            linear-gradient(
+                    #282828 14%,
+                    rgba(240, 166, 17, 0) 0,
+                    rgba(240, 166, 17, 0) 85%,
+                    #282828 0
+                )
+                0 0,
+            linear-gradient(
+                    150deg,
+                    #282828 24%,
+                    #2c3539 0,
+                    #2c3539 26%,
+                    rgba(240, 166, 17, 0) 0,
+                    rgba(240, 166, 17, 0) 74%,
+                    #2c3539 0,
+                    #2c3539 76%,
+                    #282828 0
+                )
+                0 0,
+            linear-gradient(
+                    30deg,
+                    #282828 24%,
+                    #2c3539 0,
+                    #2c3539 26%,
+                    rgba(240, 166, 17, 0) 0,
+                    rgba(240, 166, 17, 0) 74%,
+                    #2c3539 0,
+                    #2c3539 76%,
+                    #282828 0
+                )
+                0 0,
+            linear-gradient(90deg, #2c3539 2%, #282828 0, #282828 98%, #2c3539 0%) 0 0
+                #282828;
+            background-size: 40px 60px;
+            color: white; /* Set text color to white */
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #ff4500;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff6347;
+        }
+
+        .thank-you {
+            display: none;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .done-button {
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Book Your Bike</h1>
+        <label for="bikeSelect">Choose a bike:</label>
+        <select id="bikeSelect">
+            <option value="" disabled selected>Select a bike</option>
+            <option value="Yamaha R1">Yamaha R1 - $20,000</option>
+            <option value="Honda CBR1000">Honda CBR1000 - $18,000</option>
+            <option value="Kawasaki Ninja H2R">Kawasaki Ninja H2R - $30,000</option>
+            <option value="BMW S1000 RR">BMW S1000RR - $22,000</option>
+            <option value="Suzuki Hayabusa">Suzuki Hayabusa - $15,000</option>
+            <option value="Ducati Panigale V4 R">Ducati Panigale V4 R - $40,000</option>
+            <option value="KTM 1290 Super Duke R">KTM 1290 Super Duke R - $18,500</option>
+        </select>
+        <button id="bookButton">Book Now</button>
+        <div class="thank-you" id="thankYouMessage">Thank you for booking your bike!</div>
+        <button class="done-button" id="doneButton">Done</button>
+    </div>
+
+    <script>
+        document.getElementById("bookButton").addEventListener("click", function() {
+            const bikeSelect = document.getElementById("bikeSelect");
+            const selectedBike = bikeSelect.value;
+
+            if (selectedBike) {
+                const prices = {
+                    "Yamaha R1": 20000,
+                    "Honda CBR1000": 18000,
+                    "Kawasaki Ninja H2R": 30000,
+                    "BMW S1000RR": 22000,
+                    "Suzuki Hayabusa": 15000,
+                    "Ducati Panigale V4 R": 40000,
+                    "KTM 1290 Super Duke R": 18500
+                };
+
+                const taxRate = 0.10; // 10% tax
+                const totalPrice = prices[selectedBike] * (1 + taxRate);
+
+                document.getElementById("thankYouMessage").textContent = `Thank you for booking your ${selectedBike}! Total price with taxes: $${totalPrice.toFixed(2)}`;
+                document.getElementById("thankYouMessage").style.display = "block";
+                document.getElementById("doneButton").style.display = "block";
+            } else {
+                alert("Please select a bike to book.");
+            }
+        });
+
+        document.getElementById("doneButton").addEventListener("click", function() {
+            window.location.href = "info.html"; // Redirect to info.html
+        });
+    </script>
+
+</body>
+</html>
